@@ -1,0 +1,44 @@
+"===[ Settings ]========================================================
+" Autocomplete using Firefox Awesomebar subsystem
+set complete=l
+
+" Show completions as you type? '' waits for tab, 'auto' shows them immediately
+set autocomplete
+
+" Select the longest autocomplete match
+set wildmode='list:full'
+
+" Show a (n)umber on tabs, the (b)ottom scrollbar, and the (r)ight scrollbar
+set scrollbars 
+set notabnumbers
+
+" Don't beep
+set noerrorbells
+set visualbell
+
+" Theme
+colorscheme indigo
+
+" Make Firefox run faster by using JIT
+set! javascript.options.jit.chrome=true
+
+"===[ Auto commands ]===================================================
+" Pass through all keys (like CTRL-Z) on Gmail and Google Reader:
+autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+
+" Load configuration file into current browser, useful for updating after editing this file.
+command! sourcerc :source ~/.vimperatorrc
+
+"===[ Mappings ]========================================================
+" Press 'C-c' to copy, 'C-v' or 'S-Insert' to paste, or 'C-x' to cut
+" noremap <C-c> <C-v><C-c>
+" noremap <C-v> <C-v><C-v>
+" noremap <C-x> <C-v><C-x>
+" cnoremap <C-c> <C-v><C-c>
+" cnoremap <C-v> <C-v><C-v>
+" cnoremap <S-Insert> <C-v><C-v>
+" cnoremap <C-x> <C-v><C-x>
+" inoremap <C-c> <C-v><C-c>
+" inoremap <C-v> <C-v><C-v>
+" inoremap <S-Insert> <C-v><C-v>
+" inoremap <C-x> <C-v><C-x>
