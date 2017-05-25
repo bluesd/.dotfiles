@@ -1,0 +1,203 @@
+" //====================
+" //> blue .ViMrc
+" //====================
+set nocompatible
+
+"   // Hacerlo 'portable'
+"let $HOME=$VIM
+
+" ======================
+"   > Plugins
+" ======================
+
+"   //Auto-download Plug
+if !has('win32')
+    if empty(glob("$HOME/.vim/autoload/plug.vim"))
+        execute '!curl -fLo $HOME/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    endif
+endif
+
+if has('win32')
+    call plug#begin('$HOME/vimfiles/plugged')
+else
+    call plug#begin('$HOME/.vim/plugged')
+endif
+
+"   //Estetica
+Plug 'sjl/badwolf'
+"Plug 'vim-airline/vim-airline'
+"   //Comandos
+Plug 'matze/vim-move'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
+"   //Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"   //Syntax
+Plug 'pangloss/vim-javascript'
+
+call plug#end()
+
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" ===============================
+"   > Files, F.Types & Syntax
+" ===============================
+if has('autocmd')
+  filetype plugin indent on
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+set encoding=utf-8
+set ffs=unix,dos,mac
+
+" ======================
+"   > Leader
+" ======================
+let mapleader=","
+let g:mapleader=","
+
+" ======================
+"   > Style & Fonts
+" ======================
+set background=dark
+try
+    colorscheme badwolf
+catch
+    colorscheme desert
+endtry
+
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=t
+    set guioptions-=r
+    set guioptions-=L
+    "set showtabline=2
+    set t_Co=256
+    set guitablabel=%N\|\ %t\ %M
+    "   // Fuente
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_win32")
+        set guifont=Consolas:h11:cANSI
+    endif
+endif
+
+" ======================
+"   > UI / General
+" ======================
+set number
+set laststatus=2
+set cmdheight=2
+set showmode
+set ruler
+set showcmd
+set cursorline
+set showmatch
+set matchtime=3
+set display+=lastline
+set foldcolumn=1
+set lazyredraw
+set ttyfast
+"   //ESCapea rapido pa consolas con escape keys
+set ttimeout
+set ttimeoutlen=100
+
+set nrformats-=octal
+
+" ======================
+"   > Indentation
+" ======================
+set wrap
+set expandtab
+set shiftwidth=4
+set smarttab
+set tabstop=4
+set softtabstop=4
+set autoindent
+set listchars=trail:«,extends:>,precedes:<,nbsp:+
+nnoremap <leader><CR> :set list!<CR>
+
+" ======================
+"   > Completion
+" ======================
+set history=500
+set complete-=i
+set wildmenu
+set wildmode=list:longest
+
+" ======================
+"   > Moving around
+" ======================
+set scrolloff=3
+set sidescroll=3
+set sidescrolloff=3
+set backspace=indent,eol,start
+set whichwrap+=<,>
+"   // Saltos 'visuales' en lugar de reales
+nnoremap j gj
+nnoremap k gk
+"   // Como gv pero para lo insertado
+nnoremap gV `[v`]
+"   // 0 para ir al primer caracter no-blank
+noremap 0 ^
+"   // Para poder undoear C-U y C-W en insert
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+"   // Focusear ventanas sin la w
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+"   // Mover linea(s) arriba y abajo
+"nnoremap <M-j> :m +<cr>
+"nnoremap <M-k> :m -2<cr>
+"vnoremap <M-j> :m '>+<cr>gv
+"vnoremap <M-k> :m '<-2<cr>gv
+
+" ======================
+"   > Searching
+" ======================
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+nnoremap <leader><ESC> :nohlsearch<CR>
+
+" ======================
+"   > Dirs, Buffs & Regs
+" ======================
+set hidden
+set autoread
+set switchbuf=useopen,usetab
+
+set clipboard=unnamed,unnamedplus
+"vnoremap <leader>y "+y
+
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+"   // Cambiar el CWD al del buffer abierto
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" ======================
+"   > Folding
+" ======================
+set foldenable
+set foldmethod=indent
+set foldlevelstart=11
+set foldnestmax=7
+
+" ======================
+"   > Bups, Swap, etc
+" ======================
+set nobackup
+set nowritebackup
+set noswapfile
