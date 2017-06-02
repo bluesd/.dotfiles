@@ -3,6 +3,7 @@
 " //====================
 set nocompatible
 
+
 "   // Hacerlo 'portable'
 "let $HOME=$VIM
 
@@ -10,7 +11,7 @@ set nocompatible
 "   > Plugins
 " ======================
 
-"   //Auto-download Plug
+"   // Auto-download Plug
 if !has('win32')
     if empty(glob("$HOME/.vim/autoload/plug.vim"))
         silent execute '!mkdir $HOME/.vim/autoload'
@@ -159,6 +160,9 @@ noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
+"   // Para que los maps con ALT funcionen en terminales en modo 7bit
+set <m-j>=j
+set <m-k>=k
 "   // Mover linea(s) arriba y abajo
 "nnoremap <M-j> :m +<cr>
 "nnoremap <M-k> :m -2<cr>
