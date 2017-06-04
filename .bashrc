@@ -14,7 +14,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$H
 #======ALIAS Y COLORS=======
 alias ls='ls --color=auto --group-directories-first -F -h --time-style=+"%d.%m.%Y %H:%M"'
 alias ll='ls -l'
-alias la='ls -A'
+alias la='ls -lA'
 alias grep='grep --color=auto'
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
