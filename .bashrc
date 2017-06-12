@@ -62,3 +62,9 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+#===========================
+
+#============NVM============
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+fi
