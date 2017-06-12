@@ -13,38 +13,53 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
   '(package-selected-packages
-     (quote (magit git-gutter
-	     evil evil-commentary evil-surround
-	     badwolf-theme move-text
-	     neotree))))
+    (quote (darktooth-theme
+	    magit git-gutter
+	    neotree fill-column-indicator
+	    evil evil-commentary evil-surround move-text
+         ;; === Modes
+            web-mode
+	    php-mode
+	    js2-mode
+	    ))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
   )
-;; ==================================
+
 ;; ======// AUTO-INSTALL PKGS //=====
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
-;; ==================================
-;; =========// No - BACKUPS //=======
+
+;; =========// NO - BACKUPS //=======
 (setq make-backup-files nil) ; No backup~
 (setq auto-save-default nil) ; No #autosave#
-;; ==================================
+
 ;; ===========// STYLE //============
 (tool-bar-mode -1)
-(load-theme 'badwolf t)
+(load-theme 'darktooth t)
 (add-to-list 'default-frame-alist
-                       '(font . "Source Code Pro-11"))
-;; ==================================
+                       '(font . "Source Code Pro-10"))
+
 ;; ==========// CONFIG //============
+(setq-default fill-column 80)
+(setq-default indent-tabs-mode nil)
 (setq column-number-mode t)
-(global-linum-mode t)
+;; (global-linum-mode t)
+
+;; ========// CFG PLUGINS //=========
+;; ====== NeoTree
+(setq neo-theme 'arrow)
+;; ====== GitGutter
 (global-git-gutter-mode t)
-(git-gutter:linum-setup)
-;; ==================================
+;; (git-gutter:linum-setup)
+
+;; ==========// SYNTAX //============
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;; ===========// EVIL //=============
 (evil-mode t)
 (setq evil-ex-search-case 'smart)
@@ -53,8 +68,8 @@
 
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 
 (define-key evil-normal-state-map (kbd "0") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "M-k") 'move-text-up)
@@ -63,4 +78,3 @@
   (concat ":m '<-2" (kbd "RET") "gv=gv"))
 (define-key evil-visual-state-map (kbd "M-j")
   (concat ":m '>+1" (kbd "RET") "gv=gv"))
-;; ==================================
