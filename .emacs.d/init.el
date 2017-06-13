@@ -15,7 +15,9 @@
   '(package-selected-packages
     (quote (darktooth-theme spaceline diminish
             rainbow-delimiters
-            neotree fill-column-indicator
+            smooth-scrolling
+            neotree
+            fill-column-indicator
             evil evil-leader evil-commentary evil-surround
             avy move-text
             magit git-gutter
@@ -42,8 +44,9 @@
 (setq auto-save-default nil) ; No #autosave#
 
 ;; ===========// STYLE //============
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (load-theme 'darktooth t)
 (add-to-list 'default-frame-alist
                        '(font . "Source Code Pro-10"))
@@ -59,6 +62,9 @@
 (setq fci-rule-image-format 'pbm)
 (setq fci-rule-width 2)
 (setq fci-rule-color "#83A598")
+;; ------ SmoothScroll
+(smooth-scrolling-mode t)
+(setq smooth-scroll-margin 5)
 ;; ------ NeoTree
 (setq neo-theme 'nerd)
 (setq neo-window-width 25)
@@ -80,6 +86,7 @@
 (set-face-attribute 'spaceline-evil-visual nil :background "#fd971f")
 (setq spaceline-buffer-size-p nil)
 (setq spaceline-buffer-encoding-abbrev-p nil)
+(setq spaceline-hud-p nil)
 (spaceline-compile)
 ;; ------ Diminish
 (eval-after-load "evil-commentary"
