@@ -21,6 +21,8 @@
             evil evil-leader evil-commentary evil-surround
             avy move-text
             magit git-gutter
+            ivy
+            projectile
          ;; === Modes
             web-mode
 	    php-mode
@@ -32,7 +34,9 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
-  )
+ '(avy-lead-face ((t (:foreground "#FB4933" :weight bold))))
+ '(avy-lead-face-0 ((t (:foreground "#3FD7E5" :weight bold))))
+ )
 
 ;; ======// AUTO-INSTALL PKGS //=====
 (unless package-archive-contents
@@ -57,9 +61,28 @@
 (setq column-number-mode t)
 ;; (global-linum-mode t)
 
-;; ========// CFG PLUGINS //=========
+;; ==========// SYNTAX //============
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; ===========// EVIL //=============
+(evil-mode t)
+(global-evil-leader-mode t)
+(evil-leader/set-leader "<SPC>")
+(setq evil-ex-search-case 'smart)
+(evil-commentary-mode t)
+(global-evil-surround-mode t)
+
+(define-key evil-normal-state-map (kbd "0") 'evil-first-non-blank)
+(define-key evil-normal-state-map (kbd "M-k") 'move-text-up)
+(define-key evil-normal-state-map (kbd "M-j") 'move-text-down)
+(define-key evil-visual-state-map (kbd "M-k")
+  (concat ":m '<-2" (kbd "RET") "gv=gv"))
+(define-key evil-visual-state-map (kbd "M-j")
+  (concat ":m '>+1" (kbd "RET") "gv=gv"))
+
+;; ==========// PLUGINS //===========
 ;; ------ FillColumn
-(setq fci-rule-image-format 'pbm)
+;;(setq fci-rule-image-format 'pbm)
 (setq fci-rule-width 2)
 (setq fci-rule-color "#83A598")
 ;; ------ SmoothScroll
@@ -68,6 +91,13 @@
 ;; ------ NeoTree
 (setq neo-theme 'nerd)
 (setq neo-window-width 25)
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-change-root)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-select-up-node)
+(evil-leader/set-key "SPC" 'neotree-toggle)
 ;; ------ RainbowDelimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;; ------ GitGutter
@@ -95,36 +125,14 @@
   '(diminish 'git-gutter-mode))
 (eval-after-load "undo-tree"
   '(diminish 'undo-tree-mode))
+(eval-after-load "ivy"
+  '(diminish 'ivy-mode))
 (diminish 'abbrev-mode)
 ;; ------ Avy
 (setq avy-style 'at-full)
-;;(setq avy-background t)
-(setq avy-lead-face "#FB4933")
-
-;; ==========// SYNTAX //============
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-;; ===========// EVIL //=============
-(evil-mode t)
-(global-evil-leader-mode t)
-(evil-leader/set-leader "<SPC>")
-(setq evil-ex-search-case 'smart)
-(evil-commentary-mode t)
-(global-evil-surround-mode t)
-
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-change-root)
-(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-select-up-node)
-(evil-leader/set-key "SPC" 'neotree-toggle)
+(setq avy-background t)
 (evil-leader/set-key "j" 'avy-goto-line)
-
-(define-key evil-normal-state-map (kbd "0") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "M-k") 'move-text-up)
-(define-key evil-normal-state-map (kbd "M-j") 'move-text-down)
-(define-key evil-visual-state-map (kbd "M-k")
-  (concat ":m '<-2" (kbd "RET") "gv=gv"))
-(define-key evil-visual-state-map (kbd "M-j")
-  (concat ":m '>+1" (kbd "RET") "gv=gv"))
+;; ------ Ivy
+(ivy-mode t)
+;; ------ Projectile
+(evil-leader/set-key "pj" 'projectile-find-file)
