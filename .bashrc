@@ -4,10 +4,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#==========ENVVARs==========
-export EDITOR=/usr/bin/vim
-export TERM=xterm-256color
-
 #=========DOFILES===========
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$HOME'
 
@@ -39,7 +35,7 @@ RESET="\033[m"
 
 # Git branch details
 function parse_git_dirty() {
-	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+	[[ $(git status 2> /dev/null | tail -n1) != *"working tree clean"* ]] && echo "*"
 }
 function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
@@ -62,9 +58,17 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
-#===========================
+
+
+#==========ENVVARs==========
+export EDITOR=/usr/bin/vim
+export TERM=xterm-256color
+export ANDROID_HOME=$HOME/Proyectos/AndroidSDK
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 #============NVM============
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
     source /usr/share/nvm/init-nvm.sh
 fi
+
