@@ -25,8 +25,8 @@
             projectile
          ;; === Modes
             web-mode
-	    php-mode
-	    js2-mode
+            php-mode
+            js2-mode
             groovy-mode
 	    ))))
 (custom-set-faces
