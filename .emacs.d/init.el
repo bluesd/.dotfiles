@@ -24,7 +24,7 @@
             ivy
             projectile
          ;; === Modes
-            web-mode
+            web-mode emmet-mode
             php-mode
             js2-mode
             groovy-mode
@@ -51,6 +51,7 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (load-theme 'darktooth t)
 (add-to-list 'default-frame-alist
                        '(font . "Source Code Pro-10"))
@@ -136,3 +137,6 @@
 (ivy-mode t)
 ;; ------ Projectile
 (evil-leader/set-key "pj" 'projectile-find-file)
+;; ------ Emmet
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
