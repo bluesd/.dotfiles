@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite the default settings
+{
+// === TELEMETRY
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+// === STYLE
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Darktooth",
+    "editor.fontFamily": "'Fira Code','Monaco', 'Source Code Pro', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.rulers": [80,120],
+    "editor.minimap.enabled": false,
+
+// === VIM
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.leader": ",",
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.easymotion": true
+}
