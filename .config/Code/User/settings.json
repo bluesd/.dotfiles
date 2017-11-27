@@ -13,11 +13,15 @@
     "editor.fontSize": 14,
     "editor.rulers": [80,120],
     "editor.minimap.enabled": false,
-
+    "editor.renderWhitespace": "none",
+    
 // === VIM
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.leader": ",",
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
-    "vim.easymotion": true
+    "vim.easymotion": true,
+
+// === GENERAL
+    "typescript.npm": null
 }

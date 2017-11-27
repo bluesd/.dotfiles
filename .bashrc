@@ -8,8 +8,6 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$HOME'
 
 #======ALIAS Y COLORS=======
-alias emac='/usr/bin/emacs'
-alias emacs='/usr/bin/emacsclient -nc --alternate-editor=""'
 alias ls='ls --color=auto --group-directories-first -F -h --time-style=+"%d.%m.%Y %H:%M"'
 alias ll='ls -l'
 alias la='ls -lA'
