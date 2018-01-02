@@ -8,6 +8,17 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$HOME'
 
 #======ALIAS Y COLORS=======
+alias grad='cd android;./gradlew clean;cd ..'
+
+alias fuck='sudo !!'
+alias pac='sudo pacman'
+alias aur='trizen --aur'
+
+alias tn='tmux new-session -s'
+alias tk='tmux kill-session -s'
+alias ta='tmux attach -t'
+alias tl='tmux ls'
+
 alias ls='ls --color=auto --group-directories-first -F -h --time-style=+"%d.%m.%Y %H:%M"'
 alias ll='ls -l'
 alias la='ls -lA'
