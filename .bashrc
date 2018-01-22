@@ -10,6 +10,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$H
 #======ALIAS Y COLORS=======
 alias grad='cd android;./gradlew clean;cd ..'
 
+alias sudo='sudo '
 alias fuck='sudo !!'
 alias pac='sudo pacman'
 alias aur='trizen --aur'
