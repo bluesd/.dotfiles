@@ -108,13 +108,14 @@ set showmatch
 set matchtime=3
 set display+=lastline
 set foldcolumn=1
+
+set mouse=a
+set nrformats-=octal
 set lazyredraw
 set ttyfast
-"   //ESCapea rapido pa consolas con escape keys
+"   //ESCapea rapido para consolas con escape keys
 set ttimeout
 set ttimeoutlen=100
-
-set nrformats-=octal
 
 " ======================
 "   > Indentation
@@ -164,10 +165,10 @@ noremap <C-l> <C-W>l
 set <m-j>=j
 set <m-k>=k
 "   // Mover linea(s) arriba y abajo
-"nnoremap <M-j> :m +<cr>
-"nnoremap <M-k> :m -2<cr>
-"vnoremap <M-j> :m '>+<cr>gv
-"vnoremap <M-k> :m '<-2<cr>gv
+" nnoremap <M-j> :m +<cr>
+" nnoremap <M-k> :m -2<cr>
+" vnoremap <M-j> :m '>+<cr>gv
+" vnoremap <M-k> :m '<-2<cr>gv
 
 " ======================
 "   > Searching
