@@ -4,10 +4,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#=========DOFILES===========
+# Auto-complete commands when using sudo
+complete -cf sudo
+
+#=========DOTFILES===========
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Proyectos/.dotfiles/ --work-tree=$HOME'
 
-#======ALIAS Y COLORS=======
+#======ALIAS&COLORS=======
 alias grad='cd android;./gradlew clean;cd ..'
 
 alias sudo='sudo '
@@ -74,13 +77,14 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 #==========ENVVARs==========
 export EDITOR=/usr/bin/vim
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export ANDROID_HOME=$HOME/Proyectos/AndroidSDK
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 #============NVM============
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-    source /usr/share/nvm/init-nvm.sh
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+exec fish
