@@ -1,0 +1,81 @@
+! === FONT-CONFIG
+Xft.autohint: true
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+Xft.dpi: 118
+
+! === GENERAL
+Xterm.termName: xterm-256color
+
+! === COLORS
+! special
+*.foreground: #93a1a1
+!*.background: #3c3b37
+*.background: #121212
+*.cursorColor: #93a1a1
+
+! black
+*.color0: #5f5f5f
+*.color8: #828282
+
+! red
+*.color1: #d96468
+*.color9: #d98f93
+
+! green
+*.color2: #a2d964
+*.color10: #b8d98f
+
+! yellow
+*.color3: #d9c964
+*.color11: #d9cf8f
+
+! blue
+*.color4: #64a2d9
+*.color12: #8f99d9
+
+! magenta
+*.color5: #9a64d9
+*.color13: #b08fd9
+
+! cyan
+*.color6: #64d9d5
+*.color14: #8fd9d5
+
+! white
+*.color7: #989898
+*.color15: #c5c5c5
+
+! === URXVT
+URxvt.termName: rxvt-unicode
+URxvt*iconFile: ~/.icons/la-capitaine-icon-theme/apps/scalabe/terminal.svg
+URxvt.depth: 32
+URxvt.geometry: 90x30
+URxvt.loginShell: true
+URxvt.internalBorder: 3
+URxvt.lineSpace: 0
+URxvt*transparent: false
+URxvt*scrollBar: false
+!URxvt*scrollBar_right: true
+URxvt*saveLines: 12000
+URxvt*scrollstyle: plain
+URxvt*font: xft:Terminess Powerline:pixelsize=15
+URxvt*boldFont: xft:Terminess Powerline:bold:pixelsize=15
+!URxvt*letterSpace: -1
+
+URxvt.perl-ext-common: default,matcher
+URxvt.matcher.button: 1
+URxvt.url-launcher: /usr/bin/firefox
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+! some nice listings are at:
+! http://www.nisrv.com/drupal/?q=node/11
+! http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: S_base03
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+! Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 15
+
