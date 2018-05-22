@@ -34,7 +34,8 @@ fi
 nitrogen --restore &
 redshift &
 xbacklight -set 40 &
-compton --backend=glx --vsync=opengl &
+# compton --backend=glx --vsync=opengl &
+compton &
 setxkbmap -layout 'us,us' -variant ',altgr-intl' 
 setxkbmap -option 'grp:alt_shift_toggle' 
 exec i3

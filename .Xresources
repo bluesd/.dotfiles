@@ -65,6 +65,9 @@ URxvt*scrollstyle: plain
 URxvt*font: xft:Terminess Powerline:pixelsize=15
 URxvt*boldFont: xft:Terminess Powerline:bold:pixelsize=15
 !URxvt*letterSpace: -1
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
 
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 1
