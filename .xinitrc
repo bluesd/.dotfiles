@@ -31,11 +31,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-nitrogen --restore &
-redshift &
-xbacklight -set 40 &
-# compton --backend=glx --vsync=opengl &
-compton &
 setxkbmap -layout 'us,us' -variant ',altgr-intl' 
 setxkbmap -option 'grp:alt_shift_toggle' 
-exec i3
+xbacklight -set 40 &
+nitrogen --restore &
+redshift &
+# compton &
+# compton --backend=glx --vsync=opengl &
+# compton -f -o "0.5" -m "1" -e "1" -D "3" -c -C -r "26" -l "-39" -t "-25" --shadow-red "0.05" --shadow-green "0.05" --shadow-blue "0.05" &
+# exec i3
+dwmstatus 2>&1 >/dev/null &
+exec dwm

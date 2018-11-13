@@ -110,6 +110,7 @@ set display+=lastline
 set foldcolumn=1
 
 set mouse=a
+set ttymouse=sgr
 set nrformats-=octal
 set lazyredraw
 set ttyfast
