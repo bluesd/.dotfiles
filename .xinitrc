@@ -33,12 +33,14 @@ fi
 
 setxkbmap -layout 'us,us' -variant ',altgr-intl' 
 setxkbmap -option 'grp:alt_shift_toggle' 
-xbacklight -set 40 &
 nitrogen --restore &
+xbacklight -set 40 &
 redshift &
-# compton &
+compton &
+dunst &
 # compton --backend=glx --vsync=opengl &
 # compton -f -o "0.5" -m "1" -e "1" -D "3" -c -C -r "26" -l "-39" -t "-25" --shadow-red "0.05" --shadow-green "0.05" --shadow-blue "0.05" &
 # exec i3
 dwmstatus 2>&1 >/dev/null &
 exec dwm
+# exec $STARTUP startlxqt
